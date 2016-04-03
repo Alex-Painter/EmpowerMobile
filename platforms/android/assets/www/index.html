@@ -40,41 +40,53 @@
 </head>
 
 <body>
+
+  <!-- Index -->
   <div data-role="page" data-theme="a" id="index">
 
     <div data-role="header" data-theme="a">
       <h1>Empower Mobile</h1>
     </div>
 
-    <div data-role- "content" data-theme="a" id="page1_content">
+    <div data-role="content" data-theme="a" id="page1_content">
       <button onclick="takePicture()">Submit Issue</button>
+    </div>
+
+    <div data-role="content" data-theme="a" id="page1_content_2">
+      <button onclick="sendGet()">Send Get</button>
+    </div>
+
+    <div data-role="content" data-theme="a" id="page1_content_2">
+      <button onclick="sendPost()">Send Post</button>
     </div>
 
     <div data-role="footer" data-theme="a">
       <h3 align="center">(c) Empower 2016</h3>
     </div>
   </div>
+  <!-- Index End -->
+
+  <!-- Photo Confirmation Page -->
   <div data-role="page" data-theme="a" id="pictureSuccess">
 
     <div data-role="header" data-theme="a">
       <h1>Empower Mobile</h1>
     </div>
-    <h2>Your picture</h2>
+    <h2>Your issue was submitted, thank you.</h2>
     <div>
-      <img src="" height="100%" width="100%" id="picture">
+      <img src="" height="20%" width="100%" id="picture">
     </div>
+
+    <div data-role="content" data-theme="a" id="page1_content_2">
+      <button onclick="home()">Home</button>
+    </div>
+
     <div data-role="footer" data-theme="a">
       <h3 align="center">(c) Empower 2016</h3>
     </div>
 
   </div>
-  <!--<div class="app">
-            <h1>Mothertrucker</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>-->
+  <!-- Photo Confirmation Page End-->
 </body>
 
 </html>

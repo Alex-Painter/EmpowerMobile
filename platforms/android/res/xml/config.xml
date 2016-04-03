@@ -7,9 +7,10 @@
     </feature>
     <allow-intent href="market:*" />
     <name>Empower Mobile</name>
-    <description>Issue submitting platform part of the Empower family.  </description>
+    <description>Issue submitting platform part of the Empower family.</description>
     <author email="alexnpainter@gmail.com">Contact Author</author>
     <content src="index.html" />
+    <access origin="http://localhost/EmpowerWeb/public/issue" />
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />

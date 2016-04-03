@@ -51,17 +51,89 @@ var app = {
 function takePicture() {
   navigator.camera.getPicture(onSuccess, onFail, {
     quality: 50,
-    destinationType: Camera.DestinationType.DATA_URL
+    destinationType: Camera.DestinationType.DATA_URL,
+    saveToPhotoAlbum: false,
+    encodingType: Camera.EncodingType.JPEG,
   });
 }
 
-function onSuccess(imageURI) {
+function onSuccess(imageURL) {
   var image = document.getElementById('picture');
-  image.src = "data:image/jpeg;base64," + imageURI;
+  image.src = "data:image/jpeg;base64," + imageURL;
   window.location="index.html#pictureSuccess";
 
+  sendPost(imageURL);
 }
 
 function onFail(message) {
   alert('Failed because: ' + message);
+}
+
+function sendGet() {
+
+  alert("Entered sendGet()");
+
+  var url = "http://188.166.172.50/EmpowerWeb/public/issue";
+  var dataType = "json";
+  var data = "";
+  var callbackData;
+
+  /*$.ajax({
+    url: url,
+    data: data,
+    success: success,
+    dataType: dataType
+  });*/
+
+  /*$.getJSON(url, data, function(callbackData){
+    alert("GET was successful");
+  });*/
+
+  $.getJSON(url, function( data ) {
+    alert("GET was successful");
+    var items = [];
+    $.each( data, function( key, val ) {
+      items.push( "<li id='" + key + "'>" + val + "</li>" );
+    });
+
+    $( "<ul/>", {
+      "class": "my-new-list",
+      html: items.join( "" )
+    }).appendTo( "index" );
+  });
+
+
+
+  alert("Exiting sendGet()");
+}
+
+function sendPost(image) {
+  alert("Entering Post");
+
+  var data = {
+    name: "Tom Sheedy",
+    picture: image,
+    location: "Living Room"
+  }
+
+  var success;
+  var dataType;
+  var url = "http://188.166.172.50/EmpowerWeb/public/issue";
+
+    /*$.ajax({
+      type: "POST",
+      url: "http://localhost/EmpowerWeb/public/issue",
+      data: data,
+      success: success,
+      dataType: dataType
+    });*/
+
+    $.post(url, data, function(){
+      alert("Post successful");
+    });
+    alert("Leaving Post");
+}
+
+function home(){
+  window.location="index.html#index";
 }
