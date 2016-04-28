@@ -27,6 +27,8 @@ var app = {
   // 'load', 'deviceready', 'offline', and 'online'.
   bindEvents: function() {
     document.addEventListener('deviceready', this.onDeviceReady, false);
+    document.addEventListener('deviceready', getLocation(), false);
+    document.addEventListener('deviceready', initNotifications(), false);
   },
   // deviceready Event Handler
   //
@@ -34,40 +36,12 @@ var app = {
   // function, we must explicitly call 'app.receivedEvent(...);'
   onDeviceReady: function() {
     app.receivedEvent('deviceready');
+
   },
   // Update DOM on a Received Event
   receivedEvent: function(id) {
-    var parentElement = document.getElementById(id);
-    var listeningElement = parentElement.querySelector('.listening');
-    var receivedElement = parentElement.querySelector('.received');
-
-    listeningElement.setAttribute('style', 'display:none;');
-    receivedElement.setAttribute('style', 'display:block;');
-
-    console.log('Received Event: ' + id);
   }
 };
-
-function takePicture() {
-  navigator.camera.getPicture(onSuccess, onFail, {
-    quality: 50,
-    destinationType: Camera.DestinationType.DATA_URL,
-    saveToPhotoAlbum: false,
-    encodingType: Camera.EncodingType.JPEG,
-  });
-}
-
-function onSuccess(imageURL) {
-  var image = document.getElementById('picture');
-  image.src = "data:image/jpeg;base64," + imageURL;
-  window.location="index.html#pictureSuccess";
-
-  sendPost(imageURL);
-}
-
-function onFail(message) {
-  alert('Failed because: ' + message);
-}
 
 function sendGet() {
 
@@ -77,17 +51,6 @@ function sendGet() {
   var dataType = "json";
   var data = "";
   var callbackData;
-
-  /*$.ajax({
-    url: url,
-    data: data,
-    success: success,
-    dataType: dataType
-  });*/
-
-  /*$.getJSON(url, data, function(callbackData){
-    alert("GET was successful");
-  });*/
 
   $.getJSON(url, function( data ) {
     alert("GET was successful");
@@ -102,31 +65,28 @@ function sendGet() {
     }).appendTo( "index" );
   });
 
-
-
   alert("Exiting sendGet()");
 }
 
 function sendPost(image) {
   alert("Entering Post");
+  var lat = window.localStorage.getItem("lat");
+  var long = window.localStorage.getItem("long");
+  var regID = window.localStorage.getItem("registration");
+  alert("regID: " + regID);
+  //alert(coords);
 
   var data = {
     name: "Tom Sheedy",
     picture: image,
-    location: "Living Room"
+    lat: lat,
+    long: long,
+    regID: regID
   }
 
   var success;
   var dataType;
-  var url = "http://188.166.172.50/EmpowerWeb/public/issue";
-
-    /*$.ajax({
-      type: "POST",
-      url: "http://localhost/EmpowerWeb/public/issue",
-      data: data,
-      success: success,
-      dataType: dataType
-    });*/
+  var url = "http://192.168.0.4/EmpowerWeb/public/issue";
 
     $.post(url, data, function(){
       alert("Post successful");

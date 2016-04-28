@@ -9,6 +9,19 @@
     "installed_plugins": {
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "com.phonegap.plugins.PushPlugin": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "phonegap-plugin-push": {
+            "SENDER_ID": "lucid-box-127114",
+            "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.phonegap.empower"
         }
     },
     "dependent_plugins": {}

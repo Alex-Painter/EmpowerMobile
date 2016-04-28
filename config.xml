@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.phonegap.helloworld" version="0.01" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.phonegap.empower" version="0.01" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Empower Mobile</name>
     <description>Issue submitting platform part of the Empower family.</description>
     <author email="alexnpainter@gmail.com">Contact Author</author>
@@ -8,7 +8,7 @@
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
-    <preference name="fullscreen" value="true" />
+    <preference name="fullscreen" value="false" />
     <preference name="webviewbounce" value="true" />
     <preference name="prerendered-icon" value="true" />
     <preference name="stay-in-webview" value="false" />
@@ -20,8 +20,11 @@
     <preference name="disable-cursor" value="false" />
     <preference name="android-minSdkVersion" value="14" />
     <preference name="android-installLocation" value="auto" />
+    <preference name="android-build-tool" value="gradle" />
+    <gap:plugin name="com.phonegap.plugins.pushplugin" source="pgb" spec="2.5.0" />
     <gap:plugin name="org.apache.cordova.battery-status" />
     <gap:plugin name="org.apache.cordova.camera" />
+    <plugin name="cordova-plugin-camera" source="pgb" spec="1.2.0" />
     <gap:plugin name="org.apache.cordova.media-capture" />
     <gap:plugin name="org.apache.cordova.console" />
     <gap:plugin name="org.apache.cordova.contacts" />
@@ -38,6 +41,9 @@
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
+    <gap:plugin name="org.apache.cordova.geolocation" />
+    <plugin name="org.apache.cordova.geolocation" spec="0.3.12" source="pgb" />
+    <plugin name="cordova-plugin-geolocation" spec="1.0.1" source="pgb" />
     <icon src="icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="www/res/icon/android/icon-48-mdpi.png" />
@@ -79,4 +85,7 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <engine name="android" spec="~5.1.1" />
+    <plugin name="phonegap-plugin-push" spec="~1.6.2">
+        <variable name="SENDER_ID" value="lucid-box-127114" />
+    </plugin>
 </widget>
